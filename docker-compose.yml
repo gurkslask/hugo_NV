@@ -3,7 +3,7 @@ version: "2"
 services:
  server:
   image: klakegg/hugo:0.101.0-ext-ubuntu
-  command: server
+  command: server -D
   networks:
     - main
   volumes:
