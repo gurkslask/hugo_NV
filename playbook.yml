@@ -58,16 +58,21 @@
         permanent: true
         immediate: yes
 
-    - name: Make sure a service unit is running
+    - name: Make sure a  nginx is off
       ansible.builtin.systemd:
-        state: started
+        state: stopped
         enabled: true
         name: nginx
-    - name: Make sure a service unit is running
+    - name: Make sure a  docker is running
       ansible.builtin.systemd:
         state: started
         enabled: true
         name: docker
+        
+    - name: clone git repo
+      git:
+        repo: https://github.com/gurkslask/hugo_NV.git
+        dest: /srv/checkout
     # - name: Reboot
     # reboot:
 
