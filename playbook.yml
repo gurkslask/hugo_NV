@@ -3,6 +3,7 @@
   become: true
   vars:
     created_username: alex
+    project_dirr: "/srv/checkout/"
 
   tasks:
           
@@ -38,9 +39,17 @@
         state: latest
 
           
+    - name: Upgrade pip
+      pip:
+        name: pip
+        extra_args: --upgrade
     - name: Install Docker Module for Python
       pip:
         name: docker
+
+    - name: Install Docker-compose Module for Python
+      pip:
+        name: docker-compose
 
     - name: Enable HTTP
       firewalld:
@@ -61,7 +70,7 @@
     - name: Make sure a  nginx is off
       ansible.builtin.systemd:
         state: stopped
-        enabled: true
+        enabled: false
         name: nginx
     - name: Make sure a  docker is running
       ansible.builtin.systemd:
@@ -73,6 +82,16 @@
       git:
         repo: https://github.com/gurkslask/hugo_NV.git
         dest: /srv/checkout
+        
+    - name: Stop docker
+      docker_compose:
+        project_src: "{{ project_dirr }}"
+        state: absent
+
+    - name: Start docker
+      docker_compose:
+        project_src: "{{ project_dirr }}"
+        build: false
     # - name: Reboot
     # reboot:
 
