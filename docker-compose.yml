@@ -9,7 +9,7 @@ services:
   volumes:
     - "./nya_varlden:/src"
   ports:
-    - "81:1313" 
+    - "80:1313" 
       
 networks:
   main:
