@@ -1,0 +1,124 @@
+---
+- hosts: all
+  become: true
+  vars:
+    created_username: alex
+
+  tasks:
+          
+
+    - name: Update and install packages
+      yum:
+        name:
+          - curl
+          - vim
+          - git
+          - ca-certificates
+          - python3-pip
+          - dnf-plugins-core
+          - nginx
+        state: latest
+        update_cache: true
+
+    - name: Add docker repo
+      get_url:
+        url: "https://download.docker.com/linux/centos/docker-ce.repo"
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Enable docker edge & test
+      ini_file:
+        dest: /etc/yum.repos.d/docker-ce.repo
+        section: "docker-ce-edge"
+        option: enabled
+        value: 0
+
+    - name: Install docker
+      package:
+        name: docker-ce
+        state: latest
+
+          
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: Enable HTTP
+      firewalld:
+        zone: public
+        service: http
+        state: enabled
+        permanent: true
+        immediate: yes
+          
+    - name: Enable HTTPs
+      firewalld:
+        zone: public
+        service: https
+        state: enabled
+        permanent: true
+        immediate: yes
+
+    - name: Make sure a service unit is running
+      ansible.builtin.systemd:
+        state: started
+        enabled: true
+        name: nginx
+    - name: Make sure a service unit is running
+      ansible.builtin.systemd:
+        state: started
+        enabled: true
+        name: docker
+    # - name: Reboot
+    # reboot:
+
+
+          #- name: Update apt and install docker-compose
+          #dnf:
+          #name: docker-compose
+          #state: latest
+          #update_cache: true
+          #
+
+    #- name: Install aptitude
+    ##apt:
+    #name: aptitude
+    #state: latest
+    #update_cache: true
+          # - name: Allow connections on multiple ports
+          # ansible.builtin.iptables:
+          # chain: INPUT
+          # protocol: tcp
+          # destination_ports:
+          # - "80"
+          # - "443"
+          # - "22"
+          # - "8081:8083"
+          # jump: ACCEPT
+
+          # - name: Add iptables rule for HTTP
+          # command: iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+          # become: true
+        
+          # - name: Add iptables rule for HTTPS
+          # command: iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+          # become: true
+
+    # - name: Save iptables rule
+    # command: netfilter-persistent save
+    # become: true
+
+          # - name: Add Docker GPG apt Key
+          # apt_key:
+          # url: https://download.docker.com/linux/ubuntu/gpg
+          # state: present
+
+          # - name: Add Docker Repository
+          # apt_repository:
+          # repo: deb https://download.docker.com/linux/ubuntu focal stable
+          # state: present
+
+          # - name: Update apt and install docker-ce
+          # apt:
+          # name: docker-ce
+          # state: latest
+          # update_cache: true
