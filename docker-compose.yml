@@ -3,13 +3,13 @@ version: "2"
 services:
  server:
   image: klakegg/hugo:0.101.0-ext-ubuntu
-  command: server -D -b nyavarlden.se
+  command: server -D -b nyavarlden.se -p 80
   networks:
     - main
   volumes:
     - "./nya_varlden:/src"
   ports:
-    - "80:1313" 
+    - "80:80" 
       
 networks:
   main:
