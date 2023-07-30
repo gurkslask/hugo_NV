@@ -78,6 +78,11 @@
         enabled: true
         name: docker
         
+    - name: remove git repo
+      file:
+        state: absent
+        path: /srv/checkout
+
     - name: clone git repo
       git:
         repo: https://github.com/gurkslask/hugo_NV.git
