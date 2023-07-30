@@ -1,7 +1,7 @@
 ---
 title: "Kontakt"
 description: "Kontaktuppgifter"
-featured_image: "/images/gubbe.jpg"
+featured_image: "/images/hus_20.jpg"
 type: page
 menu: main
 _build:
