@@ -4,22 +4,21 @@ languageCode = "en-us"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 resourceDir = "../resources"
 
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "sv"
 SectionPagesMenu = "main"
 Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 googleAnalytics = ""
 enableRobotsTXT = true
 
 [languages]
-  [languages.en]
-    title = "Nya världen"
-    weight = 2
-    contentDir = "content/en"
-    # languageDirection = 'rtl' for Right-To-Left languages
   [languages.sv]
     title = "Nya världen"
     weight = 1
     contentDir = "content/sv"
+  [languages.en]
+    title = "Nya världen"
+    weight = 2
+    contentDir = "content/en"
 
 [sitemap]
   changefreq = "monthly"
