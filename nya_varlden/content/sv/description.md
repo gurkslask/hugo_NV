@@ -13,7 +13,7 @@ Nya världen kallas vår sommarstuga som ligger utanför Karlshamn. Den är bel�
 
 ## Stugan
 
-I stugan finns 4 rum på nedervåningen samt ett sovloft med 2 dubbelsängar och 2 enkelsängar.
+I stugan finns 2 rum med kök plus badrum på nedervåningen samt ett sovloft med 2 dubbelsängar och 2 enkelsängar.
 
 ### Entré
 
@@ -38,7 +38,7 @@ Badrummet är nyrenoverat med toalett och dusch.
 {{< figure src="/images/badrum.webp" >}}
 
 ### Sovloft
-På ovanvåningen finns ett sovloft med 5 sängplatser
+På ovanvåningen finns ett sovloft med 6 sängplatser
 
 {{< figure src="/images/sovloft.webp" >}}
 
