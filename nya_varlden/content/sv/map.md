@@ -1,12 +1,14 @@
 ---
 title: "Karta"
+featured_image: "/images/hus_20.jpg"
 date: 2023-08-06T17:20:57+02:00
 draft: true
 type: page
-menu: Main
+menu: main
 _build:
   render: always
   list: always
+  publishResources: false
 ---
 
 <iframe  
