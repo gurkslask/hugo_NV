@@ -36,7 +36,7 @@ enableRobotsTXT = true
   recent_posts_number = 3
 
 [[params.ananke_socials]]
-name = "Airbnb"
+name = "airbnb"
 url = "https://www.airbnb.com/rooms/934629510928632312?"
 
 [markup.goldmark.renderer]
